@@ -1,3 +1,11 @@
+# Bugs
+
+- [x] #1 `$ npx nx serve store --devRemotes=checkout` -> http://localhost:4200 is not starting.
+
+    the `remotes` key in `store/module-federation.config.ts` needs to be empty. [related issue](https://github.com/nrwl/nx/issues/10963#issuecomment-1203400905)
+
+- [ ] #2 `$ npx nx serve store --devRemotes=checkout` -> unexpected behavior: changing product's file will hot reload the app.
+
 # LearnNxINg
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
