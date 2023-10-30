@@ -4,7 +4,9 @@
 
     the `remotes` key in `store/module-federation.config.ts` needs to be empty. [related issue](https://github.com/nrwl/nx/issues/10963#issuecomment-1203400905)
 
-- [ ] #2 `$ npx nx serve store --devRemotes=checkout` -> unexpected behavior: changing product's file will hot reload the app.
+- [x] #2 `$ npx nx serve store --devRemotes=checkout` -> unexpected behavior: changing product's file will hot reload the app.
+
+- [x] #3 `$ npx nx serve store` -> unexpected behavior: changing product's file will hot reload.
 
 # LearnNxINg
 
