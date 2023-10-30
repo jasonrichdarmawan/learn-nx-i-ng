@@ -8,6 +8,33 @@
 
 - [x] #3 `$ npx nx serve store` -> unexpected behavior: changing product's file will hot reload.
 
+- [x] #4 `index.html` and `styles.scss` of the `product` (remote) is ignored by the `store` (host).
+
+# Known Issues
+
+- `npm install -D @angular/material` and `npx nx g @angular/material:ng-add --project=product` will throw error `Bootstrap call not found`
+
+  Solution:
+
+  product/project.json
+  ```
+    {
+        "targets": {
+            "build": {
+
+                "executor": "@angular-devkit/build-angular:browser",
+                
+                "options": {
+                    
+                    "main": "product/src/bootstrap.ts",
+                }
+            }
+        }
+    }
+  ```
+
+  https://github.com/nrwl/nx/issues/7621
+
 # LearnNxINg
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>

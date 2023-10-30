@@ -416,6 +416,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
     </style>
     <div class="wrapper">
       <div class="container">
+        <mat-slide-toggle>Toggle me!</mat-slide-toggle>
+
         <!--  WELCOME  -->
         <div id="welcome">
           <h1>
