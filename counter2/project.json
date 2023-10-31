@@ -1,0 +1,51 @@
+{
+  "name": "counter2",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "counter2/src",
+  "prefix": "learn-nx-i-ng",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/angular:ng-packagr-lite",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "counter2/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "counter2/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "counter2/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "counter2/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "counter2/**/*.ts",
+          "counter2/**/*.html",
+          "counter2/package.json"
+        ]
+      }
+    }
+  }
+}

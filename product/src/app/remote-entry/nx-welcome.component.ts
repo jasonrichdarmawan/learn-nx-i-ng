@@ -1,4 +1,6 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { CounterService } from '@learn-nx-i-ng/counter';
+import { Counter2Service } from '@learn-nx-i-ng/counter2';
 
 @Component({
   selector: 'learn-nx-i-ng-nx-welcome',
@@ -416,6 +418,20 @@ import { Component, ViewEncapsulation } from '@angular/core';
     </style>
     <div class="wrapper">
       <div class="container">
+        <p>Counter
+        <div>
+          <button (click)="decrement()">-</button>
+          <span>{{counter}}</span>
+          <button (click)="increment()">+</button>
+        </div>
+
+        <p>Counter2 (buildable library)
+        <div>
+          <button (click)="decrement2()">-</button>
+          <span>{{counter2}}</span>
+          <button (click)="increment2()">+</button>
+        </div>
+
         <mat-slide-toggle>Toggle me!</mat-slide-toggle>
 
         <!--  WELCOME  -->
@@ -852,4 +868,35 @@ nx affected:e2e</pre>
   styles: [],
   encapsulation: ViewEncapsulation.None,
 })
-export class NxWelcomeComponent {}
+export class NxWelcomeComponent {
+  counter: number;
+  counter2: number;
+
+  constructor(
+    private counterService: CounterService,
+    private counter2Service: Counter2Service,
+  ) {
+    this.counter = counterService.get();
+    this.counter2 = counter2Service.get();
+  }
+  
+  increment() {
+    this.counter += 1;
+    this.counterService.set(this.counter);
+  }
+
+  decrement() {
+    this.counter -= 1;
+    this.counterService.set(this.counter);
+  }
+
+  increment2() {
+    this.counter2 += 1;
+    this.counter2Service.set(this.counter2);
+  }
+
+  decrement2() {
+    this.counter2 -= 1;
+    this.counter2Service.set(this.counter2);
+  }
+}

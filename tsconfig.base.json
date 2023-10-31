@@ -15,6 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@learn-nx-i-ng/counter": ["counter/src/index.ts"],
+      "@learn-nx-i-ng/counter2": ["counter2/src/index.ts"],
       "checkout/Module": ["checkout/src/app/remote-entry/entry.module.ts"],
       "product/Module": ["product/src/app/remote-entry/entry.module.ts"]
     }

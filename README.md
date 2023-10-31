@@ -10,6 +10,45 @@
 
 - [x] #4 `index.html` and `styles.scss` of the `product` (remote) is ignored by the `store` (host).
 
+- [ ] #5 if you add the key `path` to the `store/tsconfig.app.json` file, it will throw error
+
+    Cause: in Nx, the key `extends` works differently compared to in Angular Workspace.
+    Drawback: the store application import the source code of the library instead of the built angular library.
+
+    changes that works in Angular Workspace.
+    ```
+    {
+    
+        "compilerOptions": {
+
+            "paths": {
+                "@learn-nx-i-ng/counter2": ["dist/counter2"],
+
+            }
+
+        }
+
+    }
+    ```
+
+    the quick fix solution is to add the rest of paths from the `./tsconfig.base.json` file.
+    ```
+    {
+    
+        "compilerOptions": {
+
+            "paths": {
+                "@learn-nx-i-ng/counter2": ["dist/counter2"],
+                "@learn-nx-i-ng/counter": ["counter/src/index.ts"],
+                "checkout/Module": ["checkout/src/app/remote-entry/entry.module.ts"],
+                "product/Module": ["product/src/app/remote-entry/entry.module.ts"]
+            }
+
+        }
+        
+    }
+    ```
+
 # Known Issues
 
 - `npm install -D @angular/material` and `npx nx g @angular/material:ng-add --project=product` will throw error `Bootstrap call not found`

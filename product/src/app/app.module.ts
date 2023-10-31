@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CounterService } from '@learn-nx-i-ng/counter';
+import { Counter2Service } from '@learn-nx-i-ng/counter2';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,7 +24,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ),
     BrowserAnimationsModule,
   ],
-  providers: [],
   bootstrap: [AppComponent],
+  providers: [
+    CounterService,
+    Counter2Service
+  ],
 })
 export class AppModule {}
